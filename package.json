@@ -1,7 +1,7 @@
 {
   "name": "portfolio-website",
-  "private": true,
-  "version": "2.0.1",
+  "private": false,
+  "version": "3.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "caniuse-lite": "^1.0.30001754",
     "framer-motion": "^12.9.1",
     "gsap": "^3.12.5",
     "lenis": "^1.1.14",
