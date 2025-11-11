@@ -1,85 +1,94 @@
 /**
- * @copyright 2024 Aime Cesaire
- * @license Apache-2.0
+ * Terminal-style projects section.
+ * © 2024-2025 Aime Cesaire Mugishawayo — Apache-2.0
  */
 
-// Components
-import ProjectCard from "./ProjectCard";
+import TerminalSection from "./TerminalSection"
 
 const works = [
   {
-    title: "Mammoth Rumble - A decentralized voting platform",
-    tags: ["Solidiy", "Web3", "React", "Bootstrap", "Ethers API" ],
-    link: "http://github.com/AimeCesaireM/Decentralized-Voting",
-    website: ""
-
+    title: "Mammoth Rumble",
+    subtitle: "decentralized voting platform",
+    tags: ["Solidity", "Web3", "React", "Ethers"],
+    link: "https://github.com/AimeCesaireM/Decentralized-Voting",
   },
   {
-    title: "Madame Saville - A market intelligence tool",
-    tags: ["Linear regression", "Data Science", "Python", "Flask"],
+    title: "Madame Saville",
+    subtitle: "market intelligence tool",
+    tags: ["Regression", "Data Science", "Python", "Flask"],
     link: "https://github.com/AimeCesaireM/madame_saville",
-    website: "https://www.loom.com/share/709ba366e40d4b27af0e8161769bac28?sid=854c5a84-433b-46a9-83c3-8cd7419f5551"
-
+    demo: "https://www.loom.com/share/709ba366e40d4b27af0e8161769bac28?sid=854c5a84-433b-46a9-83c3-8cd7419f5551",
   },
   {
-    title: "Foodback - An LLM-powered food waste management system",
-    tags: ["LLMs", "Express.js", "Hugging Face", "Computer vision"],
+    title: "Foodback",
+    subtitle: "LLM-powered food waste management",
+    tags: ["LLMs", "Express.js", "Hugging Face", "Computer Vision"],
     link: "https://github.com/AimeCesaireM/foodback",
-    website: ""
-  }
-  ,
+  },
   {
     title: "Intelligent Pacman bots",
+    subtitle: "competitive search agents",
     tags: ["Adversarial Search", "Q-Learning", "Python"],
     link: "https://github.com/AimeCesaireM/AI-Projects",
-    website: ""
   },
   {
-    title: "Phase1 - A steganography detector",
-    tags: ["Steganography", "Pixel Manipulation", "Java", "Swing"],
+    title: "Phase1",
+    subtitle: "steganography detector",
+    tags: ["Steganography", "Java", "Swing"],
     link: "https://github.com/AimeCesaireM/Steganography-Detector",
-    website: "https://sourceforge.net/projects/steganography-detector/"
+    demo: "https://sourceforge.net/projects/steganography-detector/",
   },
   {
-    title: "energive - A statistical attack on the Vigenere cypher",
-    tags: ["Cryptanalysis", "Number theory", "Statistical analysis",  "Python"],
+    title: "energive",
+    subtitle: "statistical attack on the Vigenère cipher",
+    tags: ["Cryptanalysis", "Number Theory", "Python"],
     link: "https://github.com/AimeCesaireM/ecc-cryptography",
-    website: "https://sourceforge.net/projects/enervige/"
+    demo: "https://sourceforge.net/projects/enervige/",
   },
   {
     title: "Soccer Data Analytics",
-    tags: ["Machine Learning", "Data Science", "Regression models", "Python"],
+    subtitle: "predictive modeling for EPL",
+    tags: ["Machine Learning", "Regression Models", "Python"],
     link: "https://github.com/AimeCesaireM/PremierLeagueMLProject",
-    website: ""
   },
-];
+]
 
-const Projects = ({theme}) => {
+const formatTags = (tags) => tags.join(", ")
+
+const Projects = () => {
   return (
-    <section id="projects" className="section">
-      <div className="container">
-        <h2 className="headline-2 mb-8 reveal-up">My Highlight Projects</h2>
+    <TerminalSection
+      id="projects"
+      command="ls projects/"
+      lines={[
+        { text: "# select projects", accent: true },
+        ...works.flatMap(({ title, subtitle, tags, link, demo }, index) => {
+          const label = `project[${String(index + 1).padStart(2, "0")}] ${title} — ${subtitle}`
+          const details = `  stack => ${formatTags(tags)}`
 
-        <p className=" mt-3 mb-8 max-w-[50ch] reveal-up" >
-          I particularly enjoyed building these.
-        </p>
+          const entries = [
+            {
+              text: label,
+              href: link,
+            },
+            {
+              text: details,
+            },
+          ]
 
-        <div className="grid gap-x-3 gap-y-3 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))]">
-          {works.map(({ title, tags, link, website }, key) => (
-            <ProjectCard
-              theme={theme}
-              key={key}
-              title={title}
-              tags={tags}
-              link={link}
-              website={website}
-              classes=" reveal-up"
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+          if (demo) {
+            entries.push({
+              text: `  demo => ${demo}`,
+              href: demo,
+            })
+          }
 
-export default Projects;
+          return entries
+        }),
+        { text: "# next command: `courses --recent`", accent: true },
+      ]}
+    />
+  )
+}
+
+export default Projects

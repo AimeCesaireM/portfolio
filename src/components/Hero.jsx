@@ -1,84 +1,36 @@
 /**
- * @copyright 2025 Aime Cesaire Mugishawayo
- * @license Apache-2.0
+ * Terminal-style hero section.
+ * © 2025 Aime Cesaire Mugishawayo — Apache-2.0
  */
 
-// Components
-import { ButtonPrimary, ButtonOutline } from "./Button";
+import TerminalSection from "./TerminalSection"
 
 const Hero = () => {
   return (
-    <section id="home" className="pt-28 lg:pt-36">
-      <div className="container items-center lg:grid lg:grid-cols-2 lg:gap-10">
-        <div>
-          <div className="flex items-center gap-2">
-            <figure className="img-box h-20 rounded-full overflow-hidden">
-              <a
-                href="https://www.amherst.edu"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src="./images/avatar-1.png"
-                  width={60}
-                  height={60}
-                  alt="Amherst College"
-                  className="img-cover"
-                />
-              </a>
-            </figure>
+    <TerminalSection
+      id="home"
+      command="whoami"
+      lines={[
+        { text: "name: Aime Cesaire Mugishawayo" },
+        { text: "role: systems builder // security explorer // AI tinkerer" },
+        { text: "location: Amherst College — graduating 2025" },
+        { text: "focus: intelligent systems, secure infrastructure, resilient code" },
+        {
+          text: "resume -> ./other/resume.pdf",
+          href: "/other/resume.pdf",
+        },
+        {
+          text: "github -> https://github.com/AimeCesaireM",
+          href: "https://github.com/AimeCesaireM",
+        },
+        {
+          text: "linkedin -> https://www.linkedin.com/in/aime-cesaire-mugishawayo/",
+          href: "https://www.linkedin.com/in/aime-cesaire-mugishawayo/",
+        },
+        { text: "# tip: try `cat about.txt` next", accent: true, caret: true },
+      ]}
+    />
+  )
+}
 
-            <div className="flex items-center gap-1.5 text-md font-bold tracking-wide">
-              <span className="flex relative w-2 h-2 rounded-none bg-emerald-400">
-                <span className="absolute inset-0 rounded-none bg-emerald-400 animate-ping"></span>
-              </span>
-              Graduating in 2025
-            </div>
-          </div>
-
-          <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[15ch] mt-5 mb-8 lg:mb-10">
-            Building and breaking modern systems
-          </h2>
-
-          <div className="flex items-center gap-3">
-            <ButtonPrimary
-              label="Resume"
-              icon="description"
-              href=".//other//resume.pdf"
-              download="Aime Cesaire Mugishawayo Resume.pdf"
-            />
-
-            <ButtonPrimary
-              label="GitHub"
-              icon="code"
-              href={"https://github.com/AimeCesaireM"}
-            />
-
-            <ButtonOutline
-              href="#about"
-              label="Scroll down"
-              icon="keyboard_double_arrow_down"
-            />
-          </div>
-        </div>
-
-        <div className="hidden lg:block">
-          <figure
-            className="w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 via-25%
-                         via-sky-400/40 to-65% rounded-none overflow-hidden"
-          >
-            <img
-              src="./images/hero-banner.jpg"
-              width={656}
-              height={800}
-              alt="Aime Cesaire"
-              className="w-full"
-            />
-          </figure>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default Hero;
+export default Hero
