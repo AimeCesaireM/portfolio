@@ -85,7 +85,6 @@ const Projects = () => {
 
           return entries
         }),
-        { text: "# next command: `courses --recent`", accent: true },
       ]}
     />
   )

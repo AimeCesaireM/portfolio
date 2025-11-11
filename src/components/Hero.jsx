@@ -13,7 +13,7 @@ const Hero = () => {
       lines={[
         { text: "name: Aime Cesaire Mugishawayo" },
         { text: "role: systems builder // security explorer // AI tinkerer" },
-        { text: "location: Amherst College — graduating 2025" },
+        { text: "location: Amherst College — graduated 2025" },
         { text: "focus: intelligent systems, secure infrastructure, resilient code" },
         {
           text: "resume -> ./other/resume.pdf",
@@ -26,8 +26,7 @@ const Hero = () => {
         {
           text: "linkedin -> https://www.linkedin.com/in/aime-cesaire-mugishawayo/",
           href: "https://www.linkedin.com/in/aime-cesaire-mugishawayo/",
-        },
-        { text: "# tip: try `cat about.txt` next", accent: true, caret: true },
+        }
       ]}
     />
   )

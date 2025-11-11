@@ -3,22 +3,19 @@
  * © 2024-2025 Aime Cesaire Mugishawayo — Apache-2.0
  */
 
-import TerminalSection from "./TerminalSection"
+import TerminalSection from "./TerminalSection";
 
 const skillItems = [
-  { title: "Python", desc: "AI research, backend services" },
-  { title: "Java", desc: "systems programming, tooling" },
-  { title: "Hugging Face", desc: "NLP pipelines, fine-tuning" },
-  { title: "Flutter", desc: "cross-platform product delivery" },
-  { title: "Solidity", desc: "web3 governance + auditing" },
-  { title: "Node.js", desc: "APIs, automation, ops tooling" },
-  { title: "React", desc: "front-end experiments" },
-  { title: "TailwindCSS", desc: "rapid UI prototyping" },
-  { title: "PostgreSQL", desc: "relational modeling, analytics" },
-  { title: "MySQL", desc: "transaction-heavy workloads" },
-  { title: "AWS & Azure", desc: "cloud infrastructure + DevOps" },
+  { title: "Python, Django", desc: "Fast prototyping, REST APIs" },
+  { title: "PyTorch, Hugging Face", desc: "Deep Learning, NLP pipelines, LLM fine-tuning" },
+  { title: "Rust, C++", desc: "low-level systems programming" },
+  { title: "C#, ASP.NET Core", desc: "systems programming, tooling" },
+  { title: "React Native", desc: "cross-platform mobile" },
+  { title: "Node.js, TypeScript, React", desc: "Web development" },
+  { title: "Postgres, MongoDB", desc: "databases" },
+  { title: "AWS & Azure", desc: "cloud infrastructure" },
   { title: "Docker", desc: "container orchestration" },
-]
+];
 
 const Skills = () => {
   return (
@@ -30,10 +27,9 @@ const Skills = () => {
         ...skillItems.map(({ title, desc }) => ({
           text: `- ${title} :: ${desc}`,
         })),
-        { text: "# try `ls projects/`", accent: true },
       ]}
     />
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;

@@ -3,9 +3,30 @@
  * © 2025 Aime Cesaire Mugishawayo — Apache-2.0
  */
 
-import TerminalSection from "./TerminalSection"
+import { link } from "framer-motion/client";
+import TerminalSection from "./TerminalSection";
 
 const courses = [
+  {
+    name: "Natural Language Processing",
+    link: "https://www.amherst.edu/academiclife/departments/courses/2425S/COSC/COSC-243-2425S",
+    inProgress: false,
+  },
+  {
+    name: "Machine Learning",
+    link: "https://www.amherst.edu/academiclife/departments/courses/2223S/COSC/COSC-247-2223S",
+    inProgress: false,
+  },
+  {
+    name: "Artificial Intelligence",
+    link: "https://www.amherst.edu/academiclife/departments/courses/2324F/COSC/COSC-241-2324F",
+    inProgress: false,
+  },
+  {
+    name: "Nonlinear Optimization",
+    link: "https://www.amherst.edu/academiclife/departments/courses/2425S/MATH/MATH-294-2425S",
+    inProgress: false,
+  },
   {
     name: "Algorithms",
     link: "https://www.amherst.edu/academiclife/departments/courses/2223F/COSC/COSC-311-2223F",
@@ -17,11 +38,6 @@ const courses = [
     inProgress: false,
   },
   {
-    name: "Natural Language Processing",
-    link: "https://www.amherst.edu/academiclife/departments/courses/2425S/COSC/COSC-243-2425S",
-    inProgress: true,
-  },
-  {
     name: "Computer Security",
     link: "https://www.amherst.edu/academiclife/departments/courses/2223F/COSC/COSC-383-2223F",
     inProgress: false,
@@ -29,11 +45,6 @@ const courses = [
   {
     name: "Abstract Algebra",
     link: "https://www.amherst.edu/academiclife/departments/courses/2324F/MATH/MATH-350-2324F",
-    inProgress: false,
-  },
-  {
-    name: "Machine Learning",
-    link: "https://www.amherst.edu/academiclife/departments/courses/2223S/COSC/COSC-247-2223S",
     inProgress: false,
   },
   {
@@ -47,11 +58,6 @@ const courses = [
     inProgress: false,
   },
   {
-    name: "Artificial Intelligence",
-    link: "https://www.amherst.edu/academiclife/departments/courses/2324F/COSC/COSC-241-2324F",
-    inProgress: false,
-  },
-  {
     name: "Number Theory",
     link: "https://www.amherst.edu/academiclife/departments/courses/2223S/MATH/MATH-250-2223S",
     inProgress: false,
@@ -62,26 +68,21 @@ const courses = [
     inProgress: false,
   },
   {
-    name: "Nonlinear Optimization",
-    link: "https://www.amherst.edu/academiclife/departments/courses/2425S/MATH/MATH-294-2425S",
-    inProgress: true,
-  },
-  {
     name: "Data Mining",
     link: "https://www.amherst.edu/academiclife/departments/courses/2425S/COSC/COSC-254-2425S",
-    inProgress: true,
-  },
-  {
-    name: "IBM Data Science Professional Certificate",
-    link: "https://www.coursera.org/professional-certificates/ibm-data-science#courses",
-    inProgress: true,
+    inProgress: false,
   },
   {
     name: "AWS DevOps Specialization",
     link: "https://www.coursera.org/specializations/aws-devops",
+    inProgress: false,
+  },
+  {
+    name: "Deep Learning Specialization",
+    link: "https://www.coursera.org/specializations/deep-learning",
     inProgress: true,
   },
-]
+];
 
 const Courses = () => {
   return (
@@ -94,10 +95,9 @@ const Courses = () => {
           text: `${inProgress ? "[in-progress]" : "[completed ]"} ${name}`,
           href: link,
         })),
-        { text: "# next up: `certifications --show`", accent: true },
       ]}
     />
-  )
-}
+  );
+};
 
-export default Courses
+export default Courses;

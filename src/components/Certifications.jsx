@@ -16,6 +16,11 @@ const certificationItems = [
     desc: "SOC practices, detection engineering, response",
     link: "https://www.coursera.org/professional-certificates/google-cybersecurity",
   },
+  {
+    title: "AWS DevOps Specialization",
+    desc: "CI/CD, containerization, infrastructure as code",
+    link: "https://www.coursera.org/specializations/aws-devops",
+  },
 ]
 
 const Certifications = () => {
@@ -29,7 +34,6 @@ const Certifications = () => {
           text: `- ${title} :: ${desc}`,
           href: link,
         })),
-        { text: "# final prompt: `open contacts --all`", accent: true },
       ]}
     />
   )
