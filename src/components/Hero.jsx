@@ -16,8 +16,8 @@ const Hero = () => {
         { text: "location: Amherst College — graduated 2025" },
         { text: "focus: intelligent systems, secure infrastructure, resilient code" },
         {
-          text: "resume -> ./other/resume.pdf",
-          href: "/other/resume.pdf",
+          text: "resume -> ./other/Aime_Cesaire_resume.pdf",
+          href: "/other/Aime_Cesaire_resume.pdf",
         },
         {
           text: "github -> https://github.com/AimeCesaireM",
@@ -26,6 +26,10 @@ const Hero = () => {
         {
           text: "linkedin -> https://www.linkedin.com/in/aime-cesaire-mugishawayo/",
           href: "https://www.linkedin.com/in/aime-cesaire-mugishawayo/",
+        },
+        {
+          text: "substack -> https://aimecesaire.substack.com",
+          href: "https://aimecesaire.substack.com",
         }
       ]}
     />
