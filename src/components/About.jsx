@@ -1,30 +1,19 @@
-/**
- * Terminal-style about section.
- * © 2025 Aime Cesaire Mugishawayo — Apache-2.0
- */
-
-import TerminalSection from "./TerminalSection"
-
 const About = () => {
   return (
-    <TerminalSection
-      id="about"
-      command="cat about.txt"
-      lines={[
-        {
-          text: "Hi, I’m Aime Cesaire. I dabble in complex and resilient systems.",
-        },
-        {
-          text: "My toolkit blends AI, secure infrastructure design, penetration testing, and full stack development.",
-        },
-        {
-          text: "I chase hard problems: teaching models to reason, stress-testing networks, automating tedious ops.",
-        },
-        { text: "projects_shipped = 15+" },
-        { text: "technologies_in_rotation = 6" },
-        { text: "years_in_tech = 8" },
-      ]}
-    />
+    <section id="about" className="section-card section-stack">
+      <p className="section-kicker">About</p>
+      <h2>Building intelligent systems with operational depth</h2>
+      <p>
+        My work spans product engineering, systems design, and model-aware tooling. I care about secure defaults,
+        clean architecture, and products that stay maintainable under real-world constraints.
+      </p>
+      <div className="chip-row">
+        <span>AI Tooling</span>
+        <span>Security Engineering</span>
+        <span>Cloud + Infrastructure</span>
+        <span>Full Stack Systems</span>
+      </div>
+    </section>
   )
 }
 

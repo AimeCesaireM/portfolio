@@ -1,8 +1,3 @@
-/**
- * Terminal-style connect section.
- * © 2025 Aime Cesaire Mugishawayo — Apache-2.0
- */
-
 const socialLinks = [
   {
     label: "GitHub",
@@ -18,7 +13,7 @@ const socialLinks = [
   },
   {
     label: "Substack",
-    href: "https://aimecesaire.substack.com",
+    href: "https://timeundertensors.substack.com",
     desc: "systems, AI, and security writing",
     logo: "https://cdn.simpleicons.org/substack",
   },
@@ -38,9 +33,9 @@ const socialLinks = [
 
 const Connect = () => {
   return (
-    <section id="connect" className="terminal-section connect-section">
-      <p className="terminal-line terminal-line--command">visitor@portfolio:~$ open connect --all</p>
-      <p className="terminal-line terminal-line--accent"># connect</p>
+    <section id="connect" className="section-card section-stack">
+      <p className="section-kicker">Connect</p>
+      <h2>Let&apos;s build something meaningful</h2>
       <div className="connect-grid">
         {socialLinks.map(({ label, href, desc, logo }) => (
           <a key={label} href={href} target="_blank" rel="noreferrer" className="connect-card">

@@ -1,45 +1,38 @@
-/**
- * Terminal-style experience section.
- * © 2026 Aime Cesaire Mugishawayo — Apache-2.0
- */
-
-import TerminalSection from "./TerminalSection"
-
-const experiences = [
-  {
-    role: "Software Engineer Intern",
-    org: "Scale AI",
-    period: "Summer 2024",
-    focus: "Built evaluation tooling for LLM data quality and model feedback loops.",
-  },
-  {
-    role: "Teaching Assistant",
-    org: "Amherst College Computer Science",
-    period: "2022-2025",
-    focus: "Mentored students in algorithms, systems, and practical debugging workflows.",
-  },
-  {
-    role: "Independent Builder",
-    org: "Open Source + Personal Labs",
-    period: "Ongoing",
-    focus: "Shipped AI, security, and systems experiments from concept to deployable prototypes.",
-  },
-]
+import { experiences } from "../data/experience"
 
 const Experience = () => {
   return (
-    <TerminalSection
-      id="experience"
-      command="cat experience.log"
-      lines={[
-        { text: "# selected experience", accent: true },
-        ...experiences.flatMap(({ role, org, period, focus }) => [
-          { text: `- ${role} @ ${org}` },
-          { text: `  period => ${period}` },
-          { text: `  focus  => ${focus}` },
-        ]),
-      ]}
-    />
+    <section id="experience" className="section-card section-stack">
+      <div className="experience-header">
+        <div>
+          <p className="section-kicker">Experience</p>
+          <h2>A scrollable story of work and impact</h2>
+        </div>
+        <a href="#/experience" className="experience-header__link">
+          Open full story
+        </a>
+      </div>
+
+      <div className="timeline">
+        {experiences.map((entry) => (
+          <article key={entry.id} className="timeline-entry">
+            <div className="timeline-entry__period">{entry.period}</div>
+            <div className="timeline-entry__content">
+              <h3>{entry.title}</h3>
+              <p className="timeline-entry__org">
+                {entry.org} • {entry.location}
+              </p>
+              <p>{entry.story}</p>
+              <ul>
+                {entry.highlights.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
   )
 }
 

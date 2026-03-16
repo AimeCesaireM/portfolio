@@ -1,39 +1,55 @@
-/**
- * Terminal-inspired header bar.
- * © 2025 Aime Cesaire Mugishawayo — Apache-2.0
- */
+import PropTypes from "prop-types"
 
-const Header = () => {
-  const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Connect", href: "#connect" },
-  ]
+const primaryLinks = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#/experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Connect", href: "#connect" },
+]
 
+const Header = ({ detailTitle }) => {
   return (
-    <header className="terminal-header">
-      <div className="terminal-header__left">
-        <div className="terminal-header__controls" aria-hidden="true">
-          <span className="terminal-header__dot terminal-header__dot--close" />
-          <span className="terminal-header__dot terminal-header__dot--minimize" />
-          <span className="terminal-header__dot terminal-header__dot--expand" />
-        </div>
-        <a href="https://iamecesaire.github.io" className="terminal-header__brand">
+    <header className="site-header">
+      <div className="site-header__left">
+        <a href="https://iamecesaire.github.io" className="site-header__brand">
           Aime Cesaire
         </a>
+        {detailTitle ? <span className="site-header__crumb">/ {detailTitle}</span> : null}
       </div>
 
-      <nav className="terminal-header__nav" aria-label="Primary navigation">
-        {navItems.map(({ label, href }) => (
-          <a key={href} href={href} className="terminal-header__nav-link">
-            {label}
+      <div className="site-header__right">
+        {detailTitle ? (
+          <a href="#projects" className="site-header__back">
+            Back to Projects
           </a>
-        ))}
-      </nav>
+        ) : (
+          <nav className="site-header__nav" aria-label="Primary">
+            {primaryLinks.map(({ label, href }) => (
+              <a key={href} href={href} className="site-header__nav-link">
+                {label}
+              </a>
+            ))}
+          </nav>
+        )}
+        <div className="site-header__quick-links">
+          <a href="/portfolio/other/Aime_Cesaire_resume.pdf" target="_blank" rel="noreferrer">
+            Resume
+          </a>
+          <a href="https://github.com/AimeCesaireM" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/aime-cesaire-mugishawayo/" target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+        </div>
+      </div>
     </header>
   )
+}
+
+Header.propTypes = {
+  detailTitle: PropTypes.string,
 }
 
 export default Header
