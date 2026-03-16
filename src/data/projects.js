@@ -177,6 +177,28 @@ export const projects = [
         "Sales orders flow from HubSpot to Kinetic automatically on close. Fulfillment status writes back to HubSpot without manual updates. The per-product cutover process lets the team migrate SKUs one at a time with rollback capability, while the circuit-breaker pattern has prevented webhook loops across all three connected systems.",
     },
   },
+  {
+    slug: "gratz-ai-strategy",
+    title: "Gratz Pilates AI Strategy",
+    subtitle: "End-to-end AI adoption plan across sales, ops, and production",
+    summary:
+      "A four-phase technical implementation plan I authored and am executing at Gratz Pilates -- from activating HubSpot Breeze AI with a knowledge base and Shopify-embedded chatbot, through building a Guru-to-HubSpot and Guru-to-Pinecone sync pipeline for a shared vector knowledge layer, to deploying Microsoft 365 Copilot across the team and connecting Epicor Kinetic's REST API so AI tools can query live order and production data.",
+    impact: "Took the company from zero AI tooling to a phased rollout spanning customer-facing chatbots, internal knowledge search, meeting intelligence, and live ERP queries -- at ~$430/month in new tooling cost.",
+    tags: ["HubSpot Breeze", "Pinecone", "OpenAI", "M365 Copilot", "Pipedream", "Epicor Kinetic"],
+    logoUrl: "https://www.google.com/s2/favicons?domain=hubspot.com&sz=128",
+    logoAlt: "HubSpot logo",
+    websiteUrl: null,
+    codeUrl: null,
+    proprietary: true,
+    sections: {
+      challenge:
+        "A manufacturing business with no AI adoption, scattered documentation across emails and spreadsheets, no centralized knowledge base, and manual production tracking. The team needed AI capabilities but couldn't afford enterprise-grade solutions or a dedicated AI team.",
+      build:
+        "Phase 1 activates HubSpot Breeze AI with a structured knowledge base and deploys the chatbot on the Shopify storefront. Phase 2 stands up Guru as the single source of truth, with automated Pipedream sync pipelines pushing content to both HubSpot KB (for Breeze) and a Pinecone vector database (for external AI tools) using OpenAI embeddings. Brand24 monitors brand and competitor mentions. Phase 3 deploys M365 Copilot for email drafting, meeting recaps, and Excel analysis, plus Teams Premium for intelligent meeting transcription. It also connects Epicor Kinetic's REST API through custom BAQs and a serverless function so AI tools can query live order and production status. Phase 4 defines the ongoing maintenance cadence -- Guru card verification, sync monitoring, chatbot accuracy reviews, and knowledge base updates.",
+      outcomes:
+        "A complete AI stack where writing one Guru card automatically propagates knowledge to the customer chatbot, the vector search layer, and any future AI tools -- with no manual copy-paste. Sales gets AI-assisted email and proposal drafting. Operations gets meeting intelligence and live ERP queries. The whole system runs on existing subscriptions plus ~$430/month in new tooling.",
+    },
+  },
 ]
 
 export const projectLookup = Object.fromEntries(projects.map((project) => [project.slug, project]))
