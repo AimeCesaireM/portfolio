@@ -25,7 +25,7 @@ const socialLinks = [
   },
   {
     label: "Email",
-    href: "mailto:amugishawayo25@amherst.edu",
+    href: "mailto:aimecesaire.thespecialist@gmail.com",
     desc: "direct reach-out",
     logo: "https://cdn.simpleicons.org/gmail",
   },
