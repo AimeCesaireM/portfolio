@@ -1,8 +1,10 @@
 import { projects } from "../data/projects"
+import useScrollReveal from "../hooks/useScrollReveal"
 
 const Projects = () => {
+  const ref = useScrollReveal()
   return (
-    <section id="projects" className="section-card section-stack">
+    <section ref={ref} id="projects" className="section-card section-stack scroll-reveal">
       <p className="section-kicker">Projects</p>
       <h2>Selected builds</h2>
       <div className="project-grid">

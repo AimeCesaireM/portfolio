@@ -6,12 +6,8 @@ const ExperiencePage = () => {
       <a href="#experience" className="experience-page__back">
         ← Back to Experience
       </a>
-      <p className="section-kicker">Experience Story</p>
-      <h1>Journey through engineering, teaching, and systems building</h1>
-      <p>
-        This timeline is a narrative view of my work across product engineering, applied AI, and education. It is
-        structured to read as a story while preserving concrete outcomes.
-      </p>
+      <p className="section-kicker">Experience</p>
+      <h1>The full story</h1>
 
       <div className="timeline timeline--full">
         {experiences.map((entry) => (

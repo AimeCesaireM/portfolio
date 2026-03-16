@@ -31,9 +31,12 @@ const socialLinks = [
   },
 ]
 
+import useScrollReveal from "../hooks/useScrollReveal"
+
 const Connect = () => {
+  const ref = useScrollReveal()
   return (
-    <section id="connect" className="section-card section-stack">
+    <section ref={ref} id="connect" className="section-card section-stack scroll-reveal">
       <p className="section-kicker">Connect</p>
       <h2>Let&apos;s build something meaningful</h2>
       <div className="connect-grid">

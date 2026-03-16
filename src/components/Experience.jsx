@@ -1,12 +1,14 @@
 import { experiences } from "../data/experience"
+import useScrollReveal from "../hooks/useScrollReveal"
 
 const Experience = () => {
+  const ref = useScrollReveal()
   return (
-    <section id="experience" className="section-card section-stack">
+    <section ref={ref} id="experience" className="section-card section-stack scroll-reveal">
       <div className="experience-header">
         <div>
           <p className="section-kicker">Experience</p>
-          <h2>A scrollable story of work and impact</h2>
+          <h2>Where I've worked</h2>
         </div>
         <a href="#/experience" className="experience-header__link">
           Open full story

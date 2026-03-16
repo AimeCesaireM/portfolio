@@ -1,6 +1,9 @@
+import useScrollReveal from "../hooks/useScrollReveal"
+
 const Hero = () => {
+  const ref = useScrollReveal()
   return (
-    <section id="home" className="hero-section section-card">
+    <section ref={ref} id="home" className="hero-section section-card scroll-reveal">
       <p className="section-kicker">Portfolio</p>
       <h1>Aime Cesaire Mugishawayo</h1>
       <p className="hero-section__subtitle">Systems Builder • Security Explorer • AI Tinkerer</p>
