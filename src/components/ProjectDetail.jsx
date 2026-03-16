@@ -15,6 +15,9 @@ const ProjectDetail = ({ project }) => {
 
   return (
     <section className="project-detail section-card section-stack">
+      <a href="#projects" className="project-detail__back">
+        ← Back to Projects
+      </a>
       <div className="project-detail__hero">
         <img src={logoUrl} alt={logoAlt} className="project-detail__logo" />
         <div>

@@ -3,6 +3,9 @@ import { experiences } from "../data/experience"
 const ExperiencePage = () => {
   return (
     <section className="section-card section-stack">
+      <a href="#experience" className="experience-page__back">
+        ← Back to Experience
+      </a>
       <p className="section-kicker">Experience Story</p>
       <h1>Journey through engineering, teaching, and systems building</h1>
       <p>

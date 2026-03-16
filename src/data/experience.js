@@ -2,7 +2,7 @@ export const experiences = [
   {
     id: "gratz-systems-engineer",
     period: "Jun 2025 - Present",
-    title: "Systems Engineer",
+    title: "Systems & Software Engineer",
     org: "Gratz Pilates",
     location: "Philadelphia, PA",
     story:

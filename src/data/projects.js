@@ -91,7 +91,7 @@ export const projects = [
   },
   {
     slug: "vec2vec",
-    title: "vec2vec",
+    title: "vec2.0vec",
     subtitle: "Embedding-space translation research",
     summary:
       "Framework for translating between embedding spaces while preserving semantic structure across models.",
