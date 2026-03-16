@@ -385,6 +385,8 @@ p {
   border-radius: 999px;
   padding: 0.16rem 0.52rem;
   color: var(--color-text-light);
+  white-space: nowrap;
+  line-height: 1.4;
 }
 
 .project-card:hover {

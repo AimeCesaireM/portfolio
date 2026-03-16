@@ -6,14 +6,14 @@ export const experiences = [
     org: "Gratz Pilates",
     location: "Philadelphia, PA",
     story:
-      "Technical lead on enterprise integrations, automation, infrastructure, and security across cloud and on-prem systems.",
+      "I joined as the only engineer and inherited a landscape of disconnected SaaS tools, manual data entry between systems, and no automation. My job was to make the technology actually work together -- building the integrations, writing the automation, hardening the security, and managing the infrastructure across AWS, Azure, Digital Ocean, and on-prem servers.",
     highlights: [
-      "Led full-stack Shopify-HubSpot integration architecture and SDLC delivery.",
-      "Built Python and PowerShell automation for monitoring, API testing, and backups.",
-      "Managed AWS, Azure, Digital Ocean, Linux Apache, and Windows server environments.",
-      "Implemented IAM and RBAC hardening across on-prem, PaaS, and SaaS systems.",
-      "Resolved critical Fishbowl integration bug via reverse engineering and root-cause analysis.",
-      "Optimized AI agents with context engineering and RAG for higher-fidelity support workflows.",
+      "Designed and shipped the HubSpot-to-Fishbowl order sync and the Shopify-Fishbowl validation pipeline, eliminating manual order re-entry.",
+      "Built Python and PowerShell automation for monitoring, API health checks, and scheduled backups across production systems.",
+      "Managed a mixed infrastructure stack: Linux/Apache, Windows Server, and three cloud providers.",
+      "Hardened IAM and RBAC policies across on-prem, PaaS, and SaaS systems after identifying gaps in existing access controls.",
+      "Reverse-engineered and fixed a critical Fishbowl integration bug that had been silently corrupting order data.",
+      "Improved internal AI agent accuracy by restructuring prompts with context engineering and RAG patterns.",
     ],
   },
   {
@@ -23,12 +23,12 @@ export const experiences = [
     org: "Amherst College",
     location: "Amherst, MA",
     story:
-      "Handled enterprise support, diagnostics, and systems operations while scaling reliability and security outcomes across campus services.",
+      "Three years supporting the technology behind a liberal arts campus -- diagnosing outages, managing device fleets, and building automation to keep a small team responsive to 3,000+ escalations a year. This is where I learned to debug under pressure and think about systems at scale.",
     highlights: [
-      "Performed 20+ root-cause investigations for major software outages using API and browser tooling.",
-      "Managed lifecycle and configuration of distributed hardware/software with JAMF Pro and Microsoft Intune.",
-      "Automated ticket triage for 3K+ escalations, cutting average response time by 50%.",
-      "Supported MFA rollout that helped drive an 80% reduction in security incidents.",
+      "Led 20+ root-cause investigations into major software outages, using API tracing and browser tooling to isolate failures.",
+      "Managed lifecycle and configuration of campus hardware and software through JAMF Pro and Microsoft Intune.",
+      "Automated ticket triage workflows that cut average response time by 50% across 3K+ annual escalations.",
+      "Supported a campus-wide MFA rollout that contributed to an 80% drop in security incidents.",
     ],
   },
   {
@@ -38,11 +38,11 @@ export const experiences = [
     org: "Amherst College",
     location: "Amherst, MA",
     story:
-      "Supported AI education and community growth through technical research, publishing, and cross-functional event execution.",
+      "Bridged the gap between AI research and a liberal arts audience -- prototyping models, writing accessible summaries of technical papers, and organizing events that brought AI practitioners to campus.",
     highlights: [
-      "Researched and prototyped LLMs, diffusion models, GANs, and multimodal architectures.",
-      "Co-authored two professional websites and produced 50+ AI architecture article summaries.",
-      "Coordinated six expert-led panels with 5K+ attendees, contributing to 3x membership growth.",
+      "Prototyped and evaluated LLMs, diffusion models, GANs, and multimodal architectures for educational demonstrations.",
+      "Produced 50+ article summaries translating AI research papers for a non-technical audience.",
+      "Co-organized six expert panels drawing 5K+ attendees, helping grow program membership 3x.",
     ],
   },
 ]

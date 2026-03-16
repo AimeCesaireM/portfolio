@@ -2,12 +2,12 @@ export const projects = [
   {
     slug: "hubspot-fishbowl-integration",
     title: "HubSpot -> Fishbowl Advanced Integration",
-    subtitle: "Order + inventory automation pipeline",
+    subtitle: "CRM-to-ERP order sync with SKU mapping and fallback logic",
     summary:
-      "Node.js middleware and Java plugin integration to sync SKU, customer, and order data between CRM and ERP.",
+      "A Node.js service that watches HubSpot deals via webhooks and polling, transforms line items through a SKU mapping layer with alias and fallback rules, and submits fully formed sales orders into Fishbowl's import API -- including address packing, estimated ship date resolution, and automatic UOM retry sequences.",
     impact:
-      "Reduced manual order entry and improved inventory fidelity between business systems.",
-    tags: ["Node.js", "Java", "HubSpot", "Fishbowl", "API Integration"],
+      "Eliminated manual re-keying of orders between sales and warehouse systems, catching UOM and SKU mismatches before they reach fulfillment.",
+    tags: ["Node.js", "HubSpot API", "Fishbowl API", "SQLite", "Webhooks"],
     logoUrl: "https://www.google.com/s2/favicons?domain=hubspot.com&sz=128",
     logoAlt: "HubSpot logo",
     websiteUrl: null,
@@ -15,22 +15,22 @@ export const projects = [
     proprietary: true,
     sections: {
       challenge:
-        "Sales and operations teams had inconsistent order and SKU records between HubSpot and Fishbowl, causing fulfillment delays.",
+        "Sales closed deals in HubSpot, but warehouse staff re-entered every order into Fishbowl by hand. SKUs drifted between systems, UOM mismatches caused import failures, and unmapped products were silently dropped.",
       build:
-        "Built a resilient sync service with event-driven updates, conflict handling, and observability hooks to detect data drift.",
+        "Built a sync service that fetches closed-won deals, resolves estimated ship dates across three HubSpot fields, packs addresses into Fishbowl's format with fallback defaults, and runs a retry sequence (smart UOM -> force each -> force yard) on import failures. Unmapped SKUs land as Misc Sale items instead of being lost. An admin UI shows sync status, errors, and per-order retry controls.",
       outcomes:
-        "Improved order processing reliability and lowered human reconciliation overhead for ops teams.",
+        "Orders flow from CRM to ERP without manual entry. The retry logic and Misc Sale fallback mean edge cases surface as visible items in Fishbowl rather than silent data loss.",
     },
   },
   {
     slug: "order-comparison-pipeline",
     title: "Order Comparison Pipeline",
-    subtitle: "Fishbowl-Shopify reconciliation system",
+    subtitle: "Cross-system order validation with deterministic SKU matching",
     summary:
-      "Python + Streamlit workflow to compare cross-platform orders, score mismatches, and queue correction actions.",
+      "A Python pipeline that ingests Fishbowl and Shopify CSV exports, identifies shared orders, and validates every Fishbowl line item against Shopify using a multi-tier matching engine with normalization, alias resolution, color-suffix handling, and manual override support.",
     impact:
-      "Surface SKU and quantity mismatches quickly so teams can fulfill with confidence.",
-    tags: ["Python", "Streamlit", "Shopify", "Fishbowl", "Data Reconciliation"],
+      "Catches wrong-SKU and wrong-product entry errors before orders ship, with a Streamlit UI for ops teams to review mismatches and manage overrides.",
+    tags: ["Python", "Streamlit", "Shopify", "Fishbowl", "CSV Validation"],
     logoUrl: "https://www.google.com/s2/favicons?domain=shopify.com&sz=128",
     logoAlt: "Shopify logo",
     websiteUrl: null,
@@ -38,21 +38,21 @@ export const projects = [
     proprietary: true,
     sections: {
       challenge:
-        "Order states diverged across systems and manual reconciliation was too slow during fulfillment windows.",
+        "When orders are manually entered into Fishbowl from Shopify, typos and SKU confusion are inevitable. The team had no systematic way to catch entry mistakes before fulfillment -- just spot checks and customer complaints.",
       build:
-        "Created staged matching logic, confidence scoring, and exception reports with a lightweight operations UI.",
+        "Designed a one-directional subset validator: every Fishbowl line item must match at least one Shopify item for the same order. Matching runs through seven priority tiers -- manual overrides, exact normalized match, alias lookup, base+color with normalization, base-only when Shopify omits color, HCAL/FCAL segment matching, and description fallback for blank Shopify SKUs. A Streamlit UI surfaces error cards per order with the unmatched SKU, its description, and what Shopify actually has.",
       outcomes:
-        "Helped teams triage discrepancies earlier and avoid downstream shipping errors.",
+        "Ops staff run validation before shipment and catch entry errors in minutes instead of after delivery. The override system lets the team permanently resolve known cross-system mappings without code changes.",
     },
   },
   {
     slug: "quip",
     title: "Quip",
-    subtitle: "AI-powered programming learning platform",
+    subtitle: "Desktop learning platform powered by a local LLM",
     summary:
-      "Local-first educational platform with tutoring, generated practice, system design workflows, and progress tracking.",
-    impact: "Combined tutoring and deliberate practice in one integrated product loop.",
-    tags: ["FastAPI", "React", "TypeScript", "Ollama", "Electron"],
+      "An Electron app with a FastAPI backend that runs entirely on your machine -- AI tutoring across five programming tracks, a practice engine that generates LeetCode-style problems in 20+ pattern categories with AI-graded feedback, a system design canvas with drag-and-drop architecture diagrams, plus docs, cheatsheets, flashcards with spaced repetition, and structured learning roadmaps.",
+    impact: "Ships as a single installer on Windows. No cloud accounts, no API keys, no subscription -- just Ollama running locally.",
+    tags: ["FastAPI", "React", "TypeScript", "Ollama", "Electron", "SQLAlchemy"],
     logoUrl: "https://www.google.com/s2/favicons?domain=ollama.ai&sz=128",
     logoAlt: "Quip logo",
     websiteUrl: "https://sourceforge.net/projects/quip-ai-learning/files/latest/download",
@@ -60,21 +60,21 @@ export const projects = [
     proprietary: false,
     sections: {
       challenge:
-        "Most learning tools split tutoring, coding practice, and systems design into disconnected surfaces.",
+        "Learning programming usually means juggling separate tools for tutorials, practice problems, system design, and reference material. Most AI-powered alternatives require cloud accounts and send your code to external servers.",
       build:
-        "Designed a cohesive app with AI tutoring, challenge generation, and design-canvas workflows powered by local LLMs.",
+        "Built a local-first desktop app where Ollama (qwen3) powers every AI feature. The Learn module runs chat-based tutoring with adaptive difficulty across Fundamentals, Software Engineering, AI/ML, Systems Programming, and Data Engineering. Practice dynamically generates coding challenges across 20+ LeetCode patterns and grades solutions with AI feedback. Design presents system design challenges (Twitter, YouTube, Uber, etc.) on a React Flow canvas. Everything runs offline once installed.",
       outcomes:
-        "Enabled a continuous learn-practice-design feedback loop with personalized recommendations.",
+        "Published on SourceForge as a standalone Windows installer. The app handles the full learn-practice-design loop without any external dependencies beyond Ollama.",
     },
   },
   {
     slug: "ampere",
     title: "Ampere",
-    subtitle: "IT operations for small teams",
+    subtitle: "All-in-one IT operations platform for small teams",
     summary:
-      "Unified desktop ops platform for monitoring, inventory, automation, ticketing, and incident workflows.",
-    impact: "Reduced tooling fragmentation for small IT teams operating under tight budgets.",
-    tags: ["Tauri", "React", "Fastify", "PostgreSQL", "Redis"],
+      "A native desktop application (Tauri 2) backed by a Fastify API server, PostgreSQL with pgvector, and Redis/BullMQ -- unifying service monitoring, network discovery, integration health tracking, a RAG-powered knowledge base, automation with script execution, AI-assisted insights, ticketing with SLA enforcement, and CI/CD deployment correlation into a single tool.",
+    impact: "Replaces the patchwork of Datadog, spreadsheets, scattered wikis, and Slack alerting that small IT teams typically cobble together.",
+    tags: ["Tauri", "React", "Fastify", "PostgreSQL", "Redis", "BullMQ", "TypeScript"],
     logoUrl: "https://www.google.com/s2/favicons?domain=tauri.app&sz=128",
     logoAlt: "Ampere logo",
     websiteUrl: null,
@@ -82,20 +82,20 @@ export const projects = [
     proprietary: true,
     sections: {
       challenge:
-        "Small teams often juggle multiple siloed tools for discovery, monitoring, runbooks, and ticketing.",
+        "A 5-50 person IT team can't afford separate tools for monitoring, inventory, runbooks, ticketing, and automation. They end up with fragmented visibility, no audit trail, and alert fatigue from disconnected systems.",
       build:
-        "Built a unified native app architecture spanning discovery, check engine, automation rules, and incident support.",
+        "Built across 11 phases: a resource-centric data model where everything (devices, services, integrations, people, credentials) is a row with first-class relationships. Monitoring runs continuous HTTP/TCP/ping/API checks through BullMQ queues with alert rules and re-alert logic. Network discovery does CIDR sweeps with port probing and banner grabbing. The knowledge base supports full-text and semantic (pgvector RAG) search. Script execution runs isolated under a separate OS user via sudo. AI features (Claude/GPT/Gemini) generate morning briefings and proactive insights. An append-only event log with database-level UPDATE/DELETE revocation provides an immutable audit trail. 112 integration tests run against a live Postgres instance with zero mocks.",
       outcomes:
-        "Created a single-pane operational workflow with better visibility and lower context-switching cost.",
+        "A single native app that handles monitoring, discovery, knowledge, automation, ticketing, and CI/CD correlation. No SaaS tier, no per-seat pricing, no cloud lock-in. Multi-tenancy is enforced at the query layer via Clerk sessions.",
     },
   },
   {
     slug: "llm-watermarking",
     title: "LLM Watermarking Pipeline",
-    subtitle: "Prompt-based and token-level watermarking for LLM output",
+    subtitle: "Detecting machine-generated text through hidden signals",
     summary:
-      "Two complementary approaches to embedding imperceptible, machine-detectable signals into LLM-generated text: prompt-based semantic watermarking via GPT-3.5-Turbo and token-level greenlist watermarking via Llama-2-7B-Chat.",
-    impact: "Demonstrated reliable watermark detection across paraphrasing attacks and diverse prompt distributions.",
+      "A research project exploring two complementary watermarking strategies: injecting subtle lexical patterns into prompts (detected by a fine-tuned classifier), and biasing token selection during generation using a secret-key-partitioned greenlist (detected by statistical z-test).",
+    impact: "Evaluated both approaches across ~1,000 prompts, measuring detection accuracy and resilience to paraphrasing attacks.",
     tags: ["Python", "PyTorch", "Llama 2", "GPT-3.5", "NLP Research"],
     logoUrl: "https://www.google.com/s2/favicons?domain=pytorch.org&sz=128",
     logoAlt: "PyTorch logo",
@@ -104,33 +104,33 @@ export const projects = [
     proprietary: false,
     sections: {
       challenge:
-        "LLMs generate text at scale with no built-in provenance tracking, making plagiarism and misinformation harder to detect.",
+        "As LLMs generate more text at scale, there's no reliable way to verify whether a piece of writing came from a model or a human. Existing detection tools are brittle and easy to defeat with light editing.",
       build:
-        "Implemented a prompt-based approach inserting lexical constraints (e.g., double-letter words per sentence) detected by a fine-tuned BERTa classifier, alongside a token-level greenlist watermark applying logit bias partitioned by a 128-bit secret key during nucleus sampling.",
+        "Approach A modifies prompts with lightweight lexical rules (e.g., one double-letter word per sentence) so generated text carries hidden patterns detectable by a fine-tuned BERTa classifier. Approach B re-implements the Kirchenbauer et al. (2023) greenlist watermark on Llama-2-7B-Chat, applying a +2.0 logit bias to pseudorandom token partitions seeded by a 128-bit key during nucleus sampling. Detection uses a one-sample z-test. Prompts were drawn from OpenAI Evals and WikiText-103 validation sets.",
       outcomes:
-        "Produced a comparative analysis across ~1,000 prompts from OpenAI Evals and WikiText-103, evaluating detection accuracy and robustness against paraphrasing.",
+        "Produced a comparative analysis showing trade-offs between the two approaches in detection accuracy, text quality degradation, and robustness against paraphrasing. The prompt-based method is model-agnostic but easier to defeat; the token-level method is more robust but requires generation-time access.",
     },
   },
   {
     slug: "foodback",
     title: "Foodback",
-    subtitle: "LLM-powered food waste assistant",
+    subtitle: "Reducing dining hall food waste through conscious eating",
     summary:
-      "Tooling that combines LLM workflows and CV ideas to improve food waste reporting and intervention quality.",
-    impact: "Improved visibility into food waste patterns and practical recommendation loops.",
-    tags: ["LLMs", "Computer Vision", "Express.js", "Hugging Face"],
-    logoUrl: "https://www.google.com/s2/favicons?domain=huggingface.co&sz=128",
-    logoAlt: "Hugging Face logo",
+      "A hackathon-born web app that pulls real-time college dining menus via the Nutrislice API, lets students photograph their plates to track consumption habits, and uses OpenAI to suggest portions based on past choices and sustainability goals.",
+    impact: "Built in a weekend to address research showing that students who track what they eat waste measurably less food.",
+    tags: ["React", "Next.js", "Node.js", "OpenAI API", "Nutrislice API"],
+    logoUrl: "https://www.google.com/s2/favicons?domain=nextjs.org&sz=128",
+    logoAlt: "Next.js logo",
     websiteUrl: null,
     codeUrl: "https://github.com/AimeCesaireM/foodback",
     proprietary: false,
     sections: {
       challenge:
-        "Food waste workflows often lack structured insights and fast feedback from collected records.",
+        "College dining halls generate significant food waste, but students have no feedback loop between what they take and what they actually eat. The disconnect makes waste invisible.",
       build:
-        "Built a full-stack prototype combining capture, interpretation, and recommendation layers.",
+        "Integrated Amherst College's Nutrislice menu API to show real-time breakfast, lunch, and dinner options with nutritional data. Added a plate-tracking feature where students upload meal photos. An OpenAI-powered recommendation layer analyzes eating history and suggests portion adjustments aligned with sustainability goals. Built with Next.js and React during a sustainability hackathon.",
       outcomes:
-        "Enabled clearer operational reporting and more actionable waste-reduction suggestions.",
+        "Demonstrated that combining live menu data, visual meal tracking, and AI suggestions creates a practical feedback loop for reducing individual food waste in a campus setting.",
     },
   },
 ]

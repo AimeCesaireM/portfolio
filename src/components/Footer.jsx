@@ -3,6 +3,7 @@ const Footer = () => {
     <footer className="site-footer">
       <p>© 2026 Aime Cesaire Mugishawayo</p>
       <div className="site-footer__links">
+        <a href="https://aimecesairem.github.io">Home</a>
         <a href="https://timeundertensors.substack.com" target="_blank" rel="noreferrer">
           Substack
         </a>
