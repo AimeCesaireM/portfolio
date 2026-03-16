@@ -155,6 +155,28 @@ export const projects = [
         "Delivered a working prototype at Five College DataFest 2025 that demonstrated how combining proprietary real estate data with public economic and education datasets can drive data-backed location decisions.",
     },
   },
+  {
+    slug: "hubspot-kinetic-integration",
+    title: "HubSpot <-> Epicor Kinetic",
+    subtitle: "Bi-directional CRM-to-ERP sync with Workato automation",
+    summary:
+      "A Workato-orchestrated integration that syncs HubSpot companies and closed-won deals into Epicor Kinetic as customers and sales orders, writes Kinetic order numbers and fulfillment status back to HubSpot, and runs alongside the existing Fishbowl integration during a controlled ERP migration with per-product SKU cutover.",
+    impact: "Enables a zero-downtime ERP migration from Fishbowl to Kinetic while keeping HubSpot as the single source of truth for sales pipeline data.",
+    tags: ["HubSpot", "Epicor Kinetic", "Workato", "ERP Migration", "API Integration"],
+    logoUrl: "https://www.google.com/s2/favicons?domain=epicor.com&sz=128",
+    logoAlt: "Epicor logo",
+    websiteUrl: null,
+    codeUrl: null,
+    proprietary: true,
+    sections: {
+      challenge:
+        "The business was migrating from Fishbowl to Epicor Kinetic as its ERP, but couldn't do a hard cutover -- hundreds of SKUs needed to be renamed, both systems had to run in parallel during the transition, and every HubSpot deal write-back risked triggering infinite webhook loops between the three systems.",
+      build:
+        "Designed five Workato recipes: Company-to-Customer sync (with idempotent lookup-or-create callable), Deal-to-Sales-Order (with line-item iteration, direct hs_sku-to-PartNum pass-through, and quantity/SKU validation), Order-Status-to-HubSpot (polling Kinetic orders via UDF cross-reference and mapping status through a lookup table), plus two callable recipes for customer provisioning and error notification. Infinite loops are prevented by a circuit-breaker field pattern -- every HubSpot write stamps a marker that blocks re-triggering for 90 seconds. The Fishbowl parallel-running playbook handles per-product SKU migration with a routing property that controls which ERP receives each deal.",
+      outcomes:
+        "Sales orders flow from HubSpot to Kinetic automatically on close. Fulfillment status writes back to HubSpot without manual updates. The per-product cutover process lets the team migrate SKUs one at a time with rollback capability, while the circuit-breaker pattern has prevented webhook loops across all three connected systems.",
+    },
+  },
 ]
 
 export const projectLookup = Object.fromEntries(projects.map((project) => [project.slug, project]))
