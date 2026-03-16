@@ -133,6 +133,28 @@ export const projects = [
         "Demonstrated that combining live menu data, visual meal tracking, and AI suggestions creates a practical feedback loop for reducing individual food waste in a campus setting.",
     },
   },
+  {
+    slug: "madame-saville",
+    title: "Madame Saville",
+    subtitle: "Market intelligence tool for strategic rental recommendations",
+    summary:
+      "A Flask web app built for Five College DataFest 2025 that takes a client's region, industry, budget, and talent needs, then cross-references commercial real estate data (CoStar), Bureau of Economic Analysis income figures, and IPEDS university enrollment stats to recommend optimal markets for rental investment.",
+    impact: "Turned three disparate public and proprietary datasets into actionable location recommendations for business expansion decisions.",
+    tags: ["Python", "Flask", "Data Analysis", "CoStar", "BEA", "IPEDS"],
+    logoUrl: "https://www.google.com/s2/favicons?domain=flask.palletsprojects.com&sz=128",
+    logoAlt: "Flask logo",
+    websiteUrl: "https://www.loom.com/share/709ba366e40d4b27af0e8161769bac28?sid=854c5a84-433b-46a9-83c3-8cd7419f5551",
+    codeUrl: "https://github.com/AimeCesaireM/MadameSaville",
+    proprietary: false,
+    sections: {
+      challenge:
+        "A business looking to expand or relocate has to manually cross-reference commercial real estate availability, local income levels, and talent pipeline data across disconnected sources. There's no single tool that synthesizes these factors into a recommendation.",
+      build:
+        "Built a Flask backend that validates user input (region, industry, quarterly plans, budget, talent preferences), saves inquiries with timestamps, and runs an analysis pipeline against CoStar commercial data, BEA per capita income figures, and IPEDS postsecondary enrollment stats. The frontend lets users submit inquiries and receive market recommendations with an inquiry ID for future reference.",
+      outcomes:
+        "Delivered a working prototype at Five College DataFest 2025 that demonstrated how combining proprietary real estate data with public economic and education datasets can drive data-backed location decisions.",
+    },
+  },
 ]
 
 export const projectLookup = Object.fromEntries(projects.map((project) => [project.slug, project]))
