@@ -9,7 +9,7 @@ const socialLinks = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/aime-cesaire-mugishawayo/",
     desc: "career updates and collaborations",
-    logo: "https://cdn.simpleicons.org/linkedin",
+    logo: "https://www.google.com/s2/favicons?domain=linkedin.com&sz=128",
   },
   {
     label: "Substack",

@@ -44,16 +44,9 @@ const App = () => {
     return projectLookup[route.slug] ?? null
   }, [route])
 
-  const detailTitle =
-    route.type === "project"
-      ? activeProject?.title ?? "Project"
-      : route.type === "experience"
-        ? "Experience"
-        : null
-
   return (
     <div className="site-shell">
-      <Header detailTitle={detailTitle} />
+      <Header />
       <main className="site-main">
         {route.type === "project" ? (
           <ProjectDetail project={activeProject} />
