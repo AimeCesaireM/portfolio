@@ -10,7 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Inter', 'sans-serif']
+        'sans': ['Bricolage Grotesque', 'system-ui', 'sans-serif'],
       },
       colors: {
         bg: 'var(--color-bg)',
