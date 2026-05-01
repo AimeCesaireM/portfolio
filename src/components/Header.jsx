@@ -1,3 +1,5 @@
+import useTheme from "../hooks/useTheme"
+
 const primaryLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
@@ -7,6 +9,8 @@ const primaryLinks = [
 ]
 
 const Header = () => {
+  const { theme, toggle } = useTheme()
+
   return (
     <header className="site-header">
       <div className="site-header__left">
@@ -34,6 +38,14 @@ const Header = () => {
             LinkedIn
           </a>
         </div>
+        <button
+          className="theme-toggle"
+          onClick={toggle}
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+        >
+          <span className="theme-toggle__icon" aria-hidden="true" />
+        </button>
       </div>
     </header>
   )
